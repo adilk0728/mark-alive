@@ -1,12 +1,14 @@
 package com.ad.markalive.model;
 
+import org.springframework.data.annotation.Id;
+
 public class Bookmark {
+    @Id
     private int id;
 
     private String url;
 
-    public Bookmark(int id, String url) {
-        this.id = id;
+    public Bookmark(String url) {
         this.url = url;
     }
 
