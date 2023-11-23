@@ -1,11 +1,11 @@
 <script setup>
-import Home from "./components/Home.vue";
+import BookmarkList from "./components/BookmarkList.vue";
 </script>
 
 <template>
   <div>
-    <h1>Cleaned Up Vue</h1>
-    <Home />
+    <h1>Mark-Alive</h1>
+    <BookmarkList />
   </div>
 </template>
 
