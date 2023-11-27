@@ -1,5 +1,6 @@
 <template lang="">
   <div>
+    <NavBar />
     <table>
       <thead>
         <tr>
@@ -8,7 +9,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="bookmark in bookMarkList">
+        <tr v-for="bookmark in bookMarkList" v-bind:key="bookmark.id">
           <td>
             {{ bookmark.id }}
           </td>
@@ -24,6 +25,7 @@
 <script setup>
 import { getBookmarks } from "../service/BookmarkService";
 import { ref, onMounted } from "vue";
+
 const bookMarkList = ref(null);
 
 onMounted(() => {
