@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:remove="all">Your Bookmarks</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Hello!<span th:text="${name}">Name</span></h1>
+
+<table>
+    <tr>
+        <th>No.</th>
+        <th>Bookmark URL</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="bookmark : ${bookmarks}">
+        <td th:text="${bookmark.id}">ID</td>
+        <td th:text="${bookmark.url}">URL</td>
+        <td th:text="${bookmark.url}">URL</td>
+    </tr>
+</table>
+</body>
+</html>
