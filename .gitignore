@@ -44,7 +44,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-frontend-mark-alive/node_modules
+frontend-mark-alive/mark-alive/node_modules
 .DS_Store
 frontend-mark-alive/dist
 frontend-mark-alive/dist-ssr
@@ -57,9 +57,28 @@ coverage
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+frontend-mark-alive/mark-alive/.pnp
+frontend-mark-alive/mark-alive.pnp.js
+
+# testing
+frontend-mark-alive/mark-alive/coverage
+# production
+frontend-mark-alive/mark-alive/build
+# misc
+frontend-mark-alive/mark-alive.DS_Store
+frontend-mark-alive/mark-alive.env.local
+frontend-mark-alive/mark-alive.env.development.local
+frontend-mark-alive/mark-alive.env.test.local
+frontend-mark-alive/mark-alive.env.production.local
+
+frontend-mark-alive/mark-alive/npm-debug.log*
+frontend-mark-alive/mark-alive/yarn-debug.log*
+frontend-mark-alive/mark-alive/yarn-error.log*
