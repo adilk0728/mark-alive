@@ -1,7 +1,9 @@
+import BookmarkList from "./components/BookmarkList";
 function App() {
-  return ( <>
-    <h1>First React Component</h1>
-  </>
+  return (
+    <div>
+      <BookmarkList />
+    </div>
   );
 }
 
