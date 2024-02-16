@@ -23,4 +23,8 @@ public class BookmarkController {
     public void addBookmark(@RequestParam String url){
         bookmarkService.createBookmark(url);
     }
+    @DeleteMapping("/bookmark")
+    public void deleteBookmark(@RequestParam int id){
+        bookmarkService.deleteBookmark(id);
+    }
 }

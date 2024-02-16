@@ -25,4 +25,8 @@ public class BookmarkService {
         Bookmark bookmarkToWrite = new Bookmark(url);
         bookmarkRepository.save(bookmarkToWrite);
     }
+
+    public void deleteBookmark(Integer id){
+       bookmarkRepository.deleteById(id);
+    }
 }
