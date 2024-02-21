@@ -10,10 +10,11 @@ export const List = ({ Headers, data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((element, index) => (
+          {data.map((element) => (
             <tr key={element.id}>
-              <td>{element.id}</td>
-              <td>{element.url}</td>
+              {Object.values(element).map((v) => (
+                <td>{v}</td>
+              ))}
             </tr>
           ))}
         </tbody>
