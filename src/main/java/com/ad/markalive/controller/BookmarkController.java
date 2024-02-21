@@ -20,8 +20,8 @@ public class BookmarkController {
         return bookmarkService.getAllBookmarks();
     }
     @PostMapping("/bookmark")
-    public void addBookmark(@RequestParam String url){
-        bookmarkService.createBookmark(url);
+    public void addBookmark(@RequestBody Bookmark bookmark){
+        bookmarkService.createBookmark(bookmark);
     }
     @DeleteMapping("/bookmark")
     public void deleteBookmark(@RequestParam int id){

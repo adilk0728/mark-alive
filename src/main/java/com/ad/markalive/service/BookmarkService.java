@@ -21,9 +21,8 @@ public class BookmarkService {
         return bookmarkList;
     }
 
-    public void createBookmark(String url){
-        Bookmark bookmarkToWrite = new Bookmark(url);
-        bookmarkRepository.save(bookmarkToWrite);
+    public void createBookmark(Bookmark bookmark){
+        bookmarkRepository.save(bookmark);
     }
 
     public void deleteBookmark(Integer id){
