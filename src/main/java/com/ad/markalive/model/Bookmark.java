@@ -15,8 +15,10 @@ public class Bookmark {
     @Column("REMIND_AFTER_DAY")
     private Integer remindAfter;
 
+    private boolean remind;
     public Bookmark(){
     }
+
     public Bookmark(String url){
         this.url = url;
     }
@@ -56,5 +58,13 @@ public class Bookmark {
 
     public void setRemindAfter(Integer remindAfter) {
         this.remindAfter = remindAfter;
+    }
+
+    public boolean getRemind() {
+        return remind;
+    }
+
+    public void setRemind(boolean remind) {
+        this.remind = remind;
     }
 }
