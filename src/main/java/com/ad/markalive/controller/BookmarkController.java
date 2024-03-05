@@ -19,6 +19,7 @@ public class BookmarkController {
     public List<Bookmark> getAllBookmarks(){
         return bookmarkService.getAllBookmarks();
     }
+
     @PostMapping("/bookmark")
     public void addBookmark(@RequestBody Bookmark bookmark){
         bookmarkService.createBookmark(bookmark);
@@ -26,5 +27,10 @@ public class BookmarkController {
     @DeleteMapping("/bookmark")
     public void deleteBookmark(@RequestParam int id){
         bookmarkService.deleteBookmark(id);
+    }
+
+    @PutMapping("/bookmark")
+    public void updateBookmark(@RequestBody Bookmark bookmark){
+        bookmarkService.updateBookmark(bookmark);
     }
 }

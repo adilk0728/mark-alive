@@ -1,20 +1,23 @@
 package com.ad.markalive.model;
 
+import com.ad.markalive.util.PropertiesLoader;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
-import java.time.LocalDate;
+import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Objects;
+
+@Component
 public class Bookmark {
     @Id
     private int id;
-
     private String url;
-
     @Column("CREATED")
     private LocalDate createdOn;
     @Column("REMIND_AFTER_DAY")
     private Integer remindAfter;
-
     private boolean remind;
     public Bookmark(){
     }
@@ -25,7 +28,13 @@ public class Bookmark {
     public Bookmark(String url, LocalDate createdOn, Integer remindAfter) {
         this(url);
         this.createdOn = createdOn;
-        this.remindAfter = remindAfter;
+        this.remindAfter = Objects.requireNonNullElseGet(remindAfter, () -> {
+            try {
+                return Integer.valueOf(PropertiesLoader.loadProperties().getProperty("config.defaultRemindAfterDays"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     public int getId() {

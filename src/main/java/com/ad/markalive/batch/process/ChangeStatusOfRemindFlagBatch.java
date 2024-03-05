@@ -1,4 +1,4 @@
-package com.ad.markalive.batch.processor.process;
+package com.ad.markalive.batch.process;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersBuilder;

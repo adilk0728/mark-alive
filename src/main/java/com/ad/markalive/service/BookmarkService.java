@@ -22,10 +22,15 @@ public class BookmarkService {
     }
 
     public void createBookmark(Bookmark bookmark){
-        bookmarkRepository.save(bookmark);
+        Bookmark toSaveBookmark = new Bookmark(bookmark.getUrl(), bookmark.getCreatedOn(), bookmark.getRemindAfter());
+        bookmarkRepository.save(toSaveBookmark);
     }
 
     public void deleteBookmark(Integer id){
        bookmarkRepository.deleteById(id);
+    }
+
+    public void updateBookmark(Bookmark bookmark){
+        bookmarkRepository.setFixedBookmarkFor(bookmark.getUrl(), bookmark.getCreatedOn(), bookmark.getRemindAfter(), bookmark.getId());
     }
 }
