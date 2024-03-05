@@ -3,6 +3,8 @@ package com.ad.markalive;
 import com.ad.markalive.batch.processor.BookmarkTableRemindColProcessor;
 import com.ad.markalive.model.Bookmark;
 import com.ad.markalive.repository.mappers.BookmarkRowMapper;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
@@ -18,6 +20,8 @@ import org.springframework.batch.item.database.builder.JdbcCursorItemReaderBuild
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -36,6 +40,7 @@ public class MarkaliveApplication {
 		this.dataSource = dataSource;
 		this.jobRepository = jobRepository;
 		this.platformTransactionManager = platformTransactionManager;
+		this.javaMailSender = javaMailSender;
 	}
 
 	public static void main(String[] args) {
@@ -57,7 +62,6 @@ public class MarkaliveApplication {
 		return new JobBuilder("checkRemindJob", this.jobRepository)
 				.start(processBookmarkRemind())
 				.build();
-
 	}
 
 	@Bean
@@ -95,5 +99,10 @@ public class MarkaliveApplication {
 		jobLauncher.setJobRepository(jobRepository);
 		jobLauncher.afterPropertiesSet();
 		return jobLauncher;
+	}
+
+	@Bean
+	public MimeMessage defaultMimeMessage() throws MessagingException {
+		return new MimeMessageHelper(javaMailSender.createMimeMessage(), false, "UTF-8").getMimeMessage();
 	}
 }
